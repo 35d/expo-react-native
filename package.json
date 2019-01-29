@@ -17,13 +17,13 @@
     "redux-logger": "^3.0.6"
   },
   "devDependencies": {
-    "@types/jest": "23.3.12",
-    "babel-preset-expo": "^5.0.0",
     "@babel/core": "^7.0.0",
     "@babel/preset-flow": "^7.0.0",
+    "@types/jest": "23.3.12",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.4.2",
+    "babel-preset-expo": "^5.0.0",
     "babel-preset-react-native": "4.0.1",
     "eslint": "5.10.0",
     "eslint-config-airbnb": "17.1.0",
@@ -38,7 +38,8 @@
     "jest-react-native": "16.0.0",
     "prettier-eslint": "8.8.2",
     "prettier-eslint-cli": "4.7.1",
-    "react-test-renderer": "16.6.3"
+    "react-test-renderer": "16.6.3",
+    "snapshot-diff": "^0.5.0"
   },
   "jest": {
     "preset": "react-native"

@@ -1,14 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`INCREMENT_COUNT 1`] = `
-Object {
-  "btc": 0,
-  "count": 11,
-  "eth": 0,
-  "euro": 0,
-  "isAvailable": false,
-  "ltc": 0,
-}
+exports[`カウント+1 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+  Object {
+    \\"btc\\": 0,
+-   \\"count\\": 10,
++   \\"count\\": 11,
+    \\"eth\\": 0,
+    \\"euro\\": 0,
+    \\"isAvailable\\": false,
+    \\"ltc\\": 0,
+  }"
 `;
 
-exports[`init 1`] = `undefined`;
+exports[`初期ss化 1`] = `
+"Snapshot Diff:
+  Comparing two different types of values. Expected object but received undefined."
+`;
