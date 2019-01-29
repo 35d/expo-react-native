@@ -6,6 +6,7 @@ import { Text, StatusBar, View, StyleSheet, Slider } from 'react-native';
 import { bindActionCreators } from 'redux';
 
 import * as PriceActions from '../../Actions/Price';
+import * as CountActions from '../../Actions/Count';
 import PriceSectionComponent from '../Components/PriceSection';
 
 const styles = StyleSheet.create({
@@ -59,9 +60,9 @@ class HomeIndex extends React.Component {
   };
 
   render() {
-    if (!this.props.isAvailable) {
-      return null;
-    }
+    // if (!this.props.isAvailable) {
+    //   return null;
+    // }
 
     return (
       <View style={styles.container}>
@@ -71,9 +72,16 @@ class HomeIndex extends React.Component {
         {/* <Text style={styles.text}>{this.props.btc.euro}</Text> */}
         {/* <Text style={styles.text}>{this.props.btc.euro}</Text> */}
         {/* <Text style={styles.text}>{this.props.btc.euro}</Text> */}
-        <Text style={styles.text}>aaaaaa</Text>
-        <Text style={styles.text}>aaaaaa</Text>
-        <Text style={styles.text}>aaaaaa</Text>
+        <Text
+          style={styles.text}
+          onPress={() => {
+            this.props.incrementCount();
+          }}
+        >
+          +1
+        </Text>
+        <Text style={styles.text}>{this.props.count}</Text>
+        <Text style={styles.text}>{this.props.btc}</Text>
         <Slider
           style={styles.slider}
           maximumValue={1000000}
@@ -109,7 +117,7 @@ class HomeIndex extends React.Component {
 
 const mapStateToProps = (state) => ({ ...state });
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(Object.assign({}, PriceActions), dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators(Object.assign({}, PriceActions, CountActions), dispatch);
 
 export default connect(
   mapStateToProps,

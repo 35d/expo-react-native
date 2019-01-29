@@ -13,6 +13,7 @@ const INITIAL_STATE = {
   euro: 0,
   eth: 0,
   isAvailable: false,
+  count: 10,
 };
 
 const createMiddlewares = () => {
@@ -24,6 +25,9 @@ const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'UPDATE_PRICE':
       return { ...state, ...action.payload };
+    case 'INCREMENT_COUNT':
+      const count = state.count + 1;
+      return { ...state, count };
   }
 };
 

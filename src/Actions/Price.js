@@ -1,7 +1,4 @@
 // @flow
-export const REQUEST_GROUPED_CAMPUS_LOGOS = 'REQUEST_GROUPED_CAMPUS_LOGOS';
-export const RECEIVE_GROUPED_CAMPUS_LOGOS = 'RECEIVE_GROUPED_CAMPUS_LOGOS';
-
 export type PriceAction = {
   type: 'UPDATE_PRICE' | 'UPDATE_PRICE',
   payload: {
