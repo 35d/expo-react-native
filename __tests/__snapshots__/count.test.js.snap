@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`INCREMENT_COUNT 1`] = `
+Object {
+  "btc": 0,
+  "count": 11,
+  "eth": 0,
+  "euro": 0,
+  "isAvailable": false,
+  "ltc": 0,
+}
+`;
+
+exports[`init 1`] = `undefined`;
