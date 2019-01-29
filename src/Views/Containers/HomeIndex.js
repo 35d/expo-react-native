@@ -1,18 +1,11 @@
 // @flow
 
-import React, { Component } from 'react';
-import {
-  StatusBar,
-  Animated,
-  Text,
-  View,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  Slider,
-} from 'react-native';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Text, StatusBar, View, StyleSheet, Slider } from 'react-native';
+import { bindActionCreators } from 'redux';
 
+import * as PriceActions from '../../Actions/Price';
 import PriceSectionComponent from '../Components/PriceSection';
 
 const styles = StyleSheet.create({
@@ -38,9 +31,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginTop: 2,
   },
+  text: {
+    color: '#FFF',
+  },
 });
 
-export default class HomeIndex extends React.Component {
+class HomeIndex extends React.Component {
   state = {
     value: 1,
   };
@@ -51,10 +47,7 @@ export default class HomeIndex extends React.Component {
     const btc = await this.fetchPrice('https://api.cryptowat.ch/markets/gdax/btcusd/price');
     const euro = await this.fetchPrice('https://api.cryptowat.ch/markets/bitstamp/eurusd/price');
 
-    this.props.dispatch({
-      type: 'UPDATE_STATE',
-      state: { btc, ltc, eth, euro, isAvailable: true },
-    });
+    this.props.priceUpdate(btc, ltc, eth, euro);
   }
 
   _handleUpdateConversion = (value) => this.setState({ value });
@@ -75,7 +68,12 @@ export default class HomeIndex extends React.Component {
         <StatusBar backgroundColor="#000000" barStyle="light-content" />
         {/* <PriceSectionComponent top={this.state.value} bottom="United States Dollar" symbol="$" fixed={2} /> */}
         {/* <PriceSectionComponent top={Number(this.state.value / this.props.euro)} bottom="Euro" symbol="€" fixed={2} /> */}
-
+        {/* <Text style={styles.text}>{this.props.btc.euro}</Text> */}
+        {/* <Text style={styles.text}>{this.props.btc.euro}</Text> */}
+        {/* <Text style={styles.text}>{this.props.btc.euro}</Text> */}
+        <Text style={styles.text}>aaaaaa</Text>
+        <Text style={styles.text}>aaaaaa</Text>
+        <Text style={styles.text}>aaaaaa</Text>
         <Slider
           style={styles.slider}
           maximumValue={1000000}
@@ -108,3 +106,12 @@ export default class HomeIndex extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({ ...state });
+
+const mapDispatchToProps = (dispatch) => bindActionCreators(Object.assign({}, PriceActions), dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(HomeIndex);

@@ -22,16 +22,14 @@ const createMiddlewares = () => {
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'UPDATE_STATE':
-      return { ...state, ...action.state };
+    case 'UPDATE_PRICE':
+      return { ...state, ...action.payload };
   }
 };
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(...createMiddlewares())));
 
-const mapStateToProps = (state) => {
-  return { ...state };
-};
+const mapStateToProps = (state) => ({ ...state });
 
 const ConnectedAppScreen = connect(mapStateToProps)(HomeIndex);
 
@@ -39,7 +37,7 @@ export default class RootComponent extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <ConnectedAppScreen />
+        <HomeIndex />
       </Provider>
     );
   }
