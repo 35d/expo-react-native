@@ -9,3 +9,7 @@ test('初期化', () => {
 test('カウント+1', () => {
   expect(snapshotDiff(INITIAL_STATE, reducer(INITIAL_STATE, { type: 'INCREMENT_COUNT' }))).toMatchSnapshot();
 });
+
+test('カウント-1', () => {
+  expect(snapshotDiff(INITIAL_STATE, reducer(INITIAL_STATE, { type: 'DECREMENT_COUNT' }))).toMatchSnapshot();
+});

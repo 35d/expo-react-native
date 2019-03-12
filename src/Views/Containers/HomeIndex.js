@@ -4,10 +4,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Text, StatusBar, View, StyleSheet, Slider } from 'react-native';
 import { bindActionCreators } from 'redux';
+import { SemiModal } from 'react-native-half-modal';
 
 import * as PriceActions from '../../Actions/Price';
 import * as CountActions from '../../Actions/Count';
-import PriceSectionComponent from '../Components/PriceSection';
+// import PriceSectionComponent from '../Components/PriceSection';
 
 const styles = StyleSheet.create({
   container: {
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
 class HomeIndex extends React.Component {
   state = {
     value: 1,
+    isVisible: false,
   };
 
   async componentDidMount() {
@@ -57,6 +59,14 @@ class HomeIndex extends React.Component {
     const response = await fetch(source);
     const json = await response.json();
     return json.result.price;
+  };
+
+  modalClose = () => {
+    this.setState({ isVisible: false });
+  };
+
+  modalOpen = () => {
+    this.setState({ isVisible: true });
   };
 
   render() {
@@ -80,8 +90,16 @@ class HomeIndex extends React.Component {
         >
           +1
         </Text>
+        <Text
+          style={{ color: '#FFF', textAlign: 'center', marginTop: 64 }}
+          onPress={() => {
+            this.modalOpen();
+          }}
+        >
+          OPEN
+        </Text>
         <Text style={styles.text}>{this.props.count}</Text>
-        <Text style={styles.text}>{this.props.btc}</Text>
+        {/* <Text style={styles.text}>{this.props.btc}</Text>
         <Slider
           style={styles.slider}
           maximumValue={1000000}
@@ -89,7 +107,7 @@ class HomeIndex extends React.Component {
           step={1}
           value={this.state.value}
           onSlidingComplete={this._handleUpdateConversion}
-        />
+        /> */}
         {/* <PriceSectionComponent
           top={Number(this.state.value / this.props.ltc)}
           bottom="Litecoin"
@@ -110,6 +128,21 @@ class HomeIndex extends React.Component {
           symbol="BTC"
           fixed={5}
         /> */}
+        <SemiModal
+          isVisible={this.state.isVisible}
+          onModalClose={() => {
+            this.setState({ isVisible: false });
+          }}
+          style={{
+            backgroundColor: 'pink',
+          }}
+          backgroundColor="#20aaea44"
+        >
+          <Text>I am the half-modal content</Text>
+          <Text>I am the half-modal content</Text>
+          <Text>I am the half-modal content</Text>
+          <Text>I am the half-modal content</Text>
+        </SemiModal>
       </View>
     );
   }

@@ -14,8 +14,11 @@ const reducer = (state = INITIAL_STATE, action) => {
     case 'UPDATE_PRICE':
       return { ...state, ...action.payload };
     case 'INCREMENT_COUNT':
-      const count = state.count + 1;
-      return { ...state, count };
+      return { ...state, count: state.count + 1 };
+    case 'DECREMENT_COUNT':
+      return { ...state, count: state.count - 1 };
+    default:
+      return { ...state };
   }
 };
 

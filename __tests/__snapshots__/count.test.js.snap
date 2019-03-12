@@ -16,7 +16,23 @@ exports[`カウント+1 1`] = `
   }"
 `;
 
-exports[`初期ss化 1`] = `
+exports[`カウント-1 1`] = `
 "Snapshot Diff:
-  Comparing two different types of values. Expected object but received undefined."
+- First value
++ Second value
+
+  Object {
+    \\"btc\\": 0,
+-   \\"count\\": 10,
++   \\"count\\": 9,
+    \\"eth\\": 0,
+    \\"euro\\": 0,
+    \\"isAvailable\\": false,
+    \\"ltc\\": 0,
+  }"
+`;
+
+exports[`初期化 1`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
 `;
